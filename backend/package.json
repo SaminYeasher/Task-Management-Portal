@@ -4,8 +4,8 @@
   "description": "Project & Task Management Portal API",
   "main": "src/index.js",
   "scripts": {
-    "dev": "node --watch src/index.js",
-    "start": "node src/index.js"
+    "dev": "node init && node --watch src/index.js",
+    "start": "node init && node src/index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
