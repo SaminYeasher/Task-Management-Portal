@@ -6,8 +6,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:5173';
 
-const express = require('express');
-const cors = require('cors');
+
+
 const taskRoutes = require('./routes/tasks');
 const { errorHandler } = require('./middleware/errorHandler');
 const { closeDb } = require('./db/pool');
