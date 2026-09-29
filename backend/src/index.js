@@ -1,25 +1,29 @@
 const express = require('express');
 const cors = require('cors');
-const { closeDb, getDb } = require('./db/pool');
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 const CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:5173';
 
+const express = require('express');
+const cors = require('cors');
+const taskRoutes = require('./routes/tasks');
+const { errorHandler } = require('./middleware/errorHandler');
+const { closeDb } = require('./db/pool');
+
+
 
 app.use(cors({ origin: CORS_ORIGIN }));
 app.use(express.json());
 
+app.use('/tasks', taskRoutes);
 
-app.get('/health', async (req, res) => {
-  try {
-    await getDb(); 
-    res.json({ status: 'ok', timestamp: new Date().toISOString() });
-  } catch (err) {
-    res.status(500).json({ status: 'error', message: err.message });
-  }
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
+app.use(errorHandler);
 
 process.on('SIGINT', () => {
   console.log('\nShutting down...');
