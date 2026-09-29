@@ -1,0 +1,15 @@
+{
+  "name": "task-portal-backend",
+  "version": "1.0.0",
+  "description": "Project & Task Management Portal API",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "sql.js": "^1.10.0"
+  }
+}
