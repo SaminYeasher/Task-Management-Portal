@@ -13,7 +13,8 @@ services:
       - key: CORS_ORIGIN
         value: https://task-management-portal-frontend.onrender.com
 
-  - type: static
+  - type: web
+    runtime: static
     name: task-management-portal-frontend
     rootDir: frontend
     buildCommand: npm ci && npm run build
