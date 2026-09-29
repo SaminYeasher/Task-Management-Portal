@@ -845,8 +845,4 @@ body {
     grid-template-columns: 1fr !important;
   }
 
-  .upgrade-modal {
-    max-width: 100% !important;
-    margin: 0.5rem;
-  }
 }
