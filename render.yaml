@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: task-management-portal-api
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        value: ./tasks.db
+      - key: CORS_ORIGIN
+        value: https://task-management-portal-frontend.onrender.com
+
+  - type: static
+    name: task-management-portal-frontend
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://task-management-portal-api.onrender.com
